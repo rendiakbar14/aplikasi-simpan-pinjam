@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-image: url('https://i.pinimg.com/736x/51/38/0c/51380c582cf5873971f61e7ae671e29d.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(to right, #4CAF50, #056557);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.nav-right {
+    margin-left: auto;
+}
+
+.nav-center {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex: 1;
+    margin-left: auto;
+
+}
+
+nav a {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #11e0b0;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+    }
+
+    .nav-center {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .btn-login {
+        padding: 10px 15px; 
+        font-size: 16px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        width: 100%; /* Lebar penuh */
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .nav-center {
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .btn-login {
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+}
+
+.welcome-text {
+    text-align: center;
+    font-size: 2em;
+    color: #4CAF50;
+}
+
+.box-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.box-container h3 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.box-container p {
+    color: #333;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.langkah-langkah, .manfaat-manfaat, .fitur-fitur {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.langkah-langkah li, .manfaat-manfaat li, .fitur-fitur li {
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #212f22;
+}
+
+.langkah-langkah li::before, .manfaat-manfaat li::before, .fitur-fitur li::before {
+    content: "•";
+    color: #4CAF50;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.langkah-langkah li:last-child, .manfaat-manfaat li:last-child, .fitur-fitur li:last-child {
+  border-bottom: none;
+}
+.btn-login {
+    background-color: #0ecd1b;
+    color: white;
+    border: none;
+    padding: 15px 20px 15px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    font-family:unset;
+}
+
+.btn-login:hover {
+    background-color: #212f22;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.profile img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown a:hover {
+    background-color: #f2f2f2;
+}
+
+.profile:hover .dropdown {
+    display: block;
+}
+
+.content {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #212f22;
+}
+
+.form-group input{
+    width: 98%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+} 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+    
+.form-group input:focus, .form-group select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.btn {
+    background-color: #1cd923;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: monospace;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #070d07;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.login-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('background.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+.login-box {
+    width: 350px;
+    padding: 30px;
+    background: white;
+    border: 1px solid #ffffff00;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.login-box:hover {
+    transform: scale(1.02);
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+.login-box .signup-link {
+    text-align: center;
+    margin-top: 10px;
+    color: #212f22;
+}
+
+.login-box .signup-link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.password-description {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.agreement-description {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.agreement-description a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.agreement-description a:hover {
+    text-decoration: underline;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 100px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+        
+}
+</style>
+</head>
+<body>
+    <header>
+        <nav id="navMenu">
+            <div class="logo">
+                <img src="Bahanya/Logoapk.png" alt="Logo">
+            </div>
+
+            <div class="nav-center">
+                <a href="#beranda" onclick="showPage('beranda')">Beranda</a>
+                <a href="#transaksi" onclick="showPage('transaksi')">Transaksi</a>
+                <a href="#profil" onclick="showPage('profil')">Profil</a>
+            </div>
+            <div class="nav-right">
+                <button class="btn-login" onclick="showPage('login')">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content" id="content">
+        <!-- Default Beranda -->
+        <div id="beranda">
+            <h2 class="welcome-text">Selamat Datang di Smart Finance</h2>
+            <p>Smart Finance adalah platform yang dirancang untuk membantu Anda mengelola keuangan dengan mudah. Dengan aplikasi ini, Anda dapat melakukan transaksi simpanan dan pinjaman secara online, serta memantau riwayat transaksi Anda.</p>
+          <div class="box-container">
+                <h3>Langkah Menggunakan aplikasi</h3>
+                <ol class="langkah-langkah">
+                    <li>Daftar sebagai anggota.</li>
+                    <li>Masuk ke akun Anda.</li>
+                    <li>Lakukan transaksi simpan atau pinjam.</li>
+                    <li>Lihat daftar transaksi Anda.</li>
+                </ol>
+            </div>
+            
+            <div class="box-container">
+                <h3>Manfaat Meenggunakan Aplikasi</h3>
+                <ul class="manfaat-manfaat">
+                    <li>Transaksi cepat dan aman.</li>
+                    <li>Riwayat transaksi yang terorganisir.</li>
+                    <li>Layanan 24/7 yang dapat diakses kapan saja.</li>
+                </ul>
+            </div>
+
+            <div class="box-container">
+                <h3>Fitur Aplikasi</h3>
+                <ul class="fitur-fitur">
+                    <li>Pengelolaan keuangan yang mudah dan efektif.</li>
+                    <li>Laporan transaksi yang akurat dan terperinci.</li>
+                    <li>Notifikasi transaksi yang cepat dan aman.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Default Transaksi -->
+    <div id="transaksi" style="display:none;">
+        <h2>Transaksi</h2>
+        <p>Silakan isi formulir di bawah ini untuk melakukan transaksi simpanan atau pinjaman. Pastikan semua kolom diisi dengan benar.</p>
+    <form id="transactionForm">
+        <div class="form-group">
+            <label for="nama">Nama Transaksi</label>
+            <input type="text" id="nama" name="nama" placeholder="Contoh: Simpanan Bulanan">
+        </div>
+        <div class="form-group">
+            <label for="jumlah">Jumlah</label>
+            <input type="number" id="jumlah" name="jumlah" placeholder="Contoh: 1000000">
+        </div>
+        <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <select id="kategori" name="kategori">
+                <option value="">Pilih Kategori</option>
+                <option value="simpan">Simpan</option>
+                <option value="pinjam">Pinjam</option>
+            </select>
+        </div>
+        <button type="button" class="btn" onclick="simpanTransaksi()">Simpan</button>
+        <div id="errorMessage" class="error"></div>
+    </form>
+
+    <a href="#" onclick="tampilkanDaftarTransaksi()">Lihat Daftar Transaksi</a>
+
+    <table id="daftarTransaksi" style="display:none;">
+        <thead>
+            <tr>
+                <th>Nama Transaksi</th>
+                <th>Jumlah</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+        <!-- Default Profil -->
+        <div id="profil" style="display:none;">
+            <h2>Tentang Kami</h2>
+            <p>Smart Finance adalah platform yang dirancang untuk membantu Anda mengelola keuangan dengan mudah. Dengan aplikasi ini, Anda dapat melakukan transaksi simpanan dan pinjaman secara online, serta memantau riwayat transaksi Anda.</p>
+            <div class="box-container">
+                <h3>Tujuan</h3>
+                <p>Smart Finance bertujuan untuk membantu masyarakat dalam mengelola keuangan dengan lebih efektif dan efisien. Kami berkomitmen untuk memberikan layanan yang terbaik dan memuaskan kebutuhan Anda.</p>
+                <p>Smart Finance juga bertujuan untuk meningkatkan kesadaran masyarakat tentang pentingnya mengelola keuangan dengan baik. Kami berharap bahwa dengan menggunakan aplikasi ini, Anda dapat meningkatkan kemampuan Anda dalam mengelola keuangan dan mencapai tujuan keuangan Anda.</p>
+            </div>
+
+            <div class="box-container">
+                <h3>Misi</h3>
+                <p>Smart Finance memiliki misi untuk menjadi platform keuangan yang terpercaya dan dapat diandalkan. Kami berkomitmen untuk memberikan layanan yang terbaik dan memuaskan kebutuhan Anda.</p>
+                <p>Smart Finance juga memiliki misi untuk meningkatkan kesadaran masyarakat tentang pentingnya mengelola keuangan dengan baik. Kami berharap bahwa dengan menggunakan aplikasi ini, Anda dapat meningkatkan kemampuan Anda dalam mengelola keuangan dan mencapai tujuan keuangan Anda.</p>
+            </div>
+
+            <div class="box-container">
+                <h3>Visi</h3>
+                <p>Smart Finance memiliki visi untuk menjadi platform keuangan yang terdepan dan terpercaya. Kami berkomitmen untuk memberikan layanan yang terbaik dan memuaskan kebutuhan Anda.</p>
+                <p>Smart Finance juga memiliki visi untuk meningkatkan kesadaran masyarakat tentang pentingnya mengelola keuangan dengan baik. Kami berharap bahwa dengan menggunakan aplikasi ini, Anda dapat meningkatkan kemampuan Anda dalam mengelola keuangan dan mencapai tujuan keuangan Anda.</p>
+            </div>
+        </div>
+
+        <!-- Default Login -->
+        <div id="login" style="display:none;">
+            <div class="login-container">
+                <div class="login-box">
+                    <h2>Login</h2>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <div class="signup-link">
+                        <p>Belum punya akun? <a href="#signup" onclick="showPage('signup')">Daftar sekarang</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Default SignUp -->
+        <div id="signup" style="display:none;">
+            <div class="login-container">
+                <div class="login-box">
+                    <h2>Sign Up</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="new-username">Username</label>
+                            <input type="text" id="new-username" name="new-username">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Password</label>
+                            <input type="password" id="new-password" name="new-password">
+                            
+                            <p class="password-description">Password minimal 8 karakter, terdiri dari angka dan huruf.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Konfirmasi Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password">
+                        </div>
+                        <button type="submit" class="btn">Daftar</button>
+                        
+                        <p class="agreement-description">Dengan mendaftar, Anda menyetujui <a href="#">Syarat dan Ketentuan</a> serta <a href="#">Kebijakan Privasi</a> kami.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        let loggedIn = false;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.content > div').forEach(div => {
+                div.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function simpanTransaksi() {
+            const nama = document.getElementById('nama').value;
+            const jumlah = document.getElementById('jumlah').value;
+            const kategori = document.getElementById('kategori').value;
+
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = '';
+
+            if (!nama || !jumlah || !kategori) {
+                errorMessage.textContent = 'Semua kolom harus diisi!';
+                return;
+            }
+
+            const tableBody = document.querySelector('#daftarTransaksi tbody');
+            const row = `<tr><td>${nama}</td><td>${jumlah}</td><td>${kategori}</td></tr>`;
+            tableBody.innerHTML += row;
+
+            document.getElementById('transactionForm').reset();
+        }
+
+        function tampilkanDaftarTransaksi() {
+            document.getElementById('daftarTransaksi').style.display = 'table';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                loggedIn = true;
+                updateNavMenu();
+                showPage('beranda');
+            } else {
+                alert('Harap isi username dan password.');
+            }
+        }
+
+        function handleLogout() {
+            loggedIn = false;
+            updateNavMenu();
+            showPage('login');
+        }
+
+        function updateNavMenu() {
+    const navMenu = document.getElementById('navMenu');
+    if (loggedIn) {
+        navMenu.innerHTML = `
+            <div class="logo">
+                <img src="Bahanya/Logoapk.png" alt="Logo">
+            </div>
+            <div class="nav-center">
+                <a href="#beranda" onclick="showPage('beranda')">Beranda</a>
+                <a href="#transaksi" onclick="showPage('transaksi')">Transaksi</a>
+                <a href="#profil" onclick="showPage('profil')">Profil</a>
+            </div>
+            <div class="nav-right">
+                <div class="profile">
+                    <img src="Bahanya/OIP.jpeg" alt="Profil">
+                    <div class="dropdown">
+                        <a href="#" onclick="handleLogout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        navMenu.innerHTML = `
+            <div class="logo">
+                <img src="Bahanya/Logoapk.png" alt="Logo">
+            </div>
+            <div class="nav-center">
+                <a href="#beranda" onclick="showPage('beranda')">Beranda</a>
+                <a href="#transaksi" onclick="showPage('transaksi')">Transaksi</a>
+                <a href="#profil" onclick="showPage('profil')">Profil</a>
+            </div>
+            <div class="nav-right">
+                <button class="btn-login" onclick="showPage('login')">Login</button>
+            </div>
+        `;
+    }
+}
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>Smart Finance©2025. Semua Hak Dilindungi.</p>
+      </footer>
+</body>
+</html>
